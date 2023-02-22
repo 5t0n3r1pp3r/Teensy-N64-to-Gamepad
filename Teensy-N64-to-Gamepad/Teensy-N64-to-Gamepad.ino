@@ -1,13 +1,13 @@
 /*
- * 
- * Teensy N64 Serial Converter 
- * by 5t0n3r1pp3r 
- * 
- * TX pin from 16Mhz Board connects to RX1 on Teensy or Pin0
- * Set to Joystick mode for USB Type
- * 
- * 
- */
+
+   Teensy N64 Serial Converter
+   by 5t0n3r1pp3r
+
+   TX pin from 16Mhz Board connects to RX1 on Teensy or Pin0
+   Set to Joystick mode for USB Type
+
+
+*/
 
 
 bool Debug = true;//Send Serial Output for debug or testing in proccessing
@@ -99,12 +99,6 @@ void loop() {
       if (z == '4') {
         Joystick.button(3, true);
       }
-      if (Strt == '0') {
-        Joystick.button(4, false);
-      }
-      if (Strt == '4') {
-        Joystick.button(4, true);
-      }
       if (up == '0') {
         Joystick.button(5, false);
       }
@@ -128,12 +122,6 @@ void loop() {
       }
       if (right == '4') {
         Joystick.button(8, true);
-      }
-      if (lrstrt == '0') {
-        Joystick.button(4, false);
-      }
-      if (lrstrt == '4') {
-        Joystick.button(4, true);
       }
       if (l == '0') {
         Joystick.button(9, false);
@@ -171,11 +159,19 @@ void loop() {
       if (cright == '4') {
         Joystick.button(14, true);
       }
+      if (Strt == '4' || lrstrt == '4') {
+        Joystick.button(4, true);
+      }
+      else {
+        Joystick.button(4, false);
+      }
       Joystick.hat(-1); //center hat -1 "angle" is 0,45,90,135,180,225,270,315
     }
   }
 }
 
+//Format
+//0000000000000000 0 0 /n
 //a;
 //b;
 //z;
